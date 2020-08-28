@@ -20,7 +20,10 @@ public class CommonApi {
         return Holder.holder;
     }
 
-    public void init(Context context){
+    public void init(Context context) throws Exception {
+        if (context == null) {
+            throw new Exception("context can not bean null!");
+        }
         this.mContext = context;
     }
 

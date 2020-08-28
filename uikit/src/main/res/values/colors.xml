@@ -6,4 +6,7 @@
     <color name="theme_color">#246df5</color>
     <color name="theme_green">#03ac8e</color>
     <color name="theme_red">#ce405b</color>
+
+    <color name="theme_tab_selected">@color/theme_color</color>
+    <color name="theme_tab_unselect">#c7ced4</color>
 </resources>

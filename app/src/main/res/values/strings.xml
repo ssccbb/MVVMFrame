@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">MVVMFrame</string>
+    <string name="app_cache_tips">清除缓存吗？</string>
+    <string name="app_choose_tips">请选择</string>
+    <string name="app_open_nightmode_tips">要开启夜间模式吗？</string>
+    <string name="app_close_nightmode_tips">要关闭夜间模式吗？</string>
+    <!--sys-->
+    <string name="sys_copy_tipst">复制</string>
+    <string name="sys_skip_hint">跳过</string>
+    <string name="sys_test">示例文字</string>
+    <string name="sys_login_out">退出登录</string>
+    <string name="sys_login_in">登录</string>
+    <string name="sys_change_lang_tips">切换语言将重新载入并回退到首页，需要切换吗？</string>
+    <string name="sys_done">确定</string>
+    <string name="sys_confirm">确认</string>
+    <string name="sys_cancel">取消</string>
+    <string name="sys_net_error">服务器错误</string>
+    <string name="sys_net_empty">暂无数据</string>
+    <string name="sys_oprate_succ">操作成功</string>
+    <string name="sys_oprate_failed">操作失败</string>
+    <!--login-->
+    <string name="login">登录</string>
+    <string name="login_phone">邮箱</string>
+    <string name="login_pwd">密码</string>
+    <string name="login_regist">注册</string>
+    <string name="login_regist_tips">还没有账号？</string>
+    <string name="login_tiny_tips">现在登录</string>
+    <string name="login_forget">忘记密码</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_failed">登录失败</string>
+    <string name="login_empty_phone">请输入正确的账号</string>
+    <string name="login_empty_pwd">请输入正确的密码</string>
+    <!--regist-->
+    <string name="regist_title">邮箱注册</string>
+    <string name="regist_vertify">发送验证码</string>
+    <string name="regist_vertify_send">已发送</string>
+    <string name="regist_email">请输入邮箱</string>
+    <string name="regist_pwd">请输入密码</string>
+    <string name="regist_pwd2">请再次输入密码</string>
+    <string name="regist_email_code">验证码</string>
+    <string name="regist_email_code_null">验证码(选填)</string>
+    <string name="regist_code">推广码</string>
+    <string name="regist_code_null">推广码(选填)</string>
+    <string name="regist_next">下一步</string>
+    <string name="regist_empty_email_code">请输入正确的邮箱验证码</string>
+    <string name="regist_empty_code">请输入正确的邀请码</string>
+    <string name="regist_not_same_pwd">两次密码输入不一致</string>
+    <string name="regist_get_email_code">请获取邮箱验证码</string>
+    <string name="regist_wrong_email_code">邮箱验证码错误</string>
+    <!--resetpwd-->
+    <string name="reset_title">重置密码</string>
+    <!--about us-->
+    <string name="about_contact">联系我们</string>
+    <string name="about_privacy">隐私政策</string>
 </resources>
