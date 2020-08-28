@@ -13,10 +13,10 @@ mvvm架构
 7. App权限管理
 8. LifeCycler
 9. 翻滚字幕TextView
-10.下拉放大头部ImageView
-11.底部导航栏Tab封装
-12.ToolBar配置封装
-13.完全展示RecyclerView
-14.带加载状态的ContentLoder
-15.腾讯X5WebView
-16.操作流记录体系
+10. 下拉放大头部ImageView
+11. 底部导航栏Tab封装
+12. ToolBar配置封装
+13. 完全展示RecyclerView
+14. 带加载状态的ContentLoder
+15. 腾讯X5WebView
+16. 操作流记录体系
