@@ -1,0 +1,31 @@
+ext {
+    isMoudle = true;
+
+    android = [
+            minSdkVersion    : 21,
+            targetSdkVersion : 28,
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.3",
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    app = [
+            net_domain     : '"http://www.ftdime.com"',
+            net_domain_test: '"http://www.ftdime.com"',
+            net_domain_name: '"ftcoin"'
+    ]
+
+    sign = [
+            "keyPassword"  : "646693",
+            "keyAlias"     : "sung723",
+            "storePassword": "646693",
+            "storeFile"    : "../extras/keystore/sung723.jks"
+    ]
+
+    channel = [
+    ]
+
+    key = [
+    ]
+}

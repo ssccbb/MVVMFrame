@@ -1,0 +1,154 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    def app_name = "mvvmframe"
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        applicationId "com.sung.mvvmframe"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "default"
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias rootProject.ext.sign.keyAlias
+            keyPassword rootProject.ext.sign.keyPassword
+            storeFile file(rootProject.ext.sign.storeFile)
+            storePassword rootProject.ext.sign.storePassword
+        }
+
+        release {
+            keyAlias rootProject.ext.sign.keyAlias
+            keyPassword rootProject.ext.sign.keyPassword
+            storeFile file(rootProject.ext.sign.storeFile)
+            storePassword rootProject.ext.sign.storePassword
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'NET_DOMAIN', rootProject.ext.app.net_domain
+            buildConfigField 'String', 'NET_DOMAIN_TEST', rootProject.ext.app.net_domain_test
+            buildConfigField 'String', 'NET_DOMAIN_NAME', rootProject.ext.app.net_domain_name
+            System.out.println("buildDebug-----------------------------------------------------------")
+
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            buildConfigField 'String', 'NET_DOMAIN', rootProject.ext.app.net_domain
+            buildConfigField 'String', 'NET_DOMAIN_TEST', rootProject.ext.app.net_domain_test
+            buildConfigField 'String', 'NET_DOMAIN_NAME', rootProject.ext.app.net_domain_name
+            System.out.println("buildRelease-----------------------------------------------------------")
+
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def releaseTime = (new Date()).format('yyyyMMdd')
+            def outputFile = output.outputFile
+            def type = "Debug"
+            if (variant.name.endsWith("Release") || variant.name.endsWith("release")) {
+                type = "Release";
+            }
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                outputFileName = "${app_name}_${name}_${type}_${defaultConfig.versionName}_${releaseTime}" + ".apk"
+            }
+        }
+    }
+
+    allprojects {
+        repositories {
+            maven { url 'https://jitpack.io' }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    // data bingding
+    buildFeatures {
+        dataBinding = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        preDexLibraries = false
+        jumboMode true
+    }
+
+    compileOptions {
+        // 指定JKD1.8（lambda表达式）
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    productFlavors {
+        //默认包
+        original {
+            versionCode rootProject.ext.android.versionCode
+            versionName rootProject.ext.android.versionName
+            manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+        //渠道及马甲包配置
+        googleplay {
+            //指定这个渠道的版本号
+            versionCode 2
+            versionName "1.2"
+            //指定区别于其他渠道的 applicationId
+            applicationId "com.sung.bookexchange.gp"
+            manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+        yingyongbao {//腾讯应用宝
+            versionCode 3
+            versionName "1.3"
+            applicationId "com.sung.bookexchange.yyb"
+            manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    /* butterknife */
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    /* eventbus */
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    /* fresco */
+    implementation 'com.facebook.fresco:fresco:1.11.0'
+    /* gson */
+    implementation 'com.google.code.gson:gson:2.8.2'
+    /* basequickadapter */
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
+    implementation project(':net')
+    implementation project(':common')
+    implementation project(':uikit')
+}

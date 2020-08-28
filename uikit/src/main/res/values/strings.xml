@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">uikit</string>
+    <string name="app_loading_tips">加载中</string>
+    <string name="app_loading_empty">什么都没有</string>
+    <string name="app_loading_error">加载失败</string>
+    <string name="app_loading_retry">重新载入</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_know">知道了</string>
+    <string name="dialog_wrong">点错了</string>
+    <string name="dialog_loginout_tips">确认注销并退出吗?</string>
+</resources>
