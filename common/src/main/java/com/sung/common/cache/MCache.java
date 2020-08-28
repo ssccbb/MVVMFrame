@@ -125,4 +125,27 @@ public class MCache {
         }
         return false;
     }
+
+    public static boolean setGuideShown(boolean shown) {
+        try {
+            SharedPreferences.Editor edit = SPUtils.get(Constants.MCache.GUIDE_HAS_SHOW).edit();
+            edit.putBoolean(Constants.MCache.GUIDE_HAS_SHOW, shown);
+            return edit.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 获取引导页是否展示
+     * */
+    private static boolean isGuideShown() {
+        try {
+            return SPUtils.get(Constants.MCache.GUIDE_HAS_SHOW)
+                    .getBoolean(Constants.MCache.GUIDE_HAS_SHOW, false);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

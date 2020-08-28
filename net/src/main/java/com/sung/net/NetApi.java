@@ -25,4 +25,8 @@ public class NetApi {
         }
         this.mContext = context;
     }
+
+    public Context getContext() {
+        return mContext;
+    }
 }

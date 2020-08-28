@@ -16,7 +16,7 @@
         android:networkSecurityConfig="@xml/network_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/BaseTheme">
         <meta-data
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />
@@ -29,13 +29,19 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <activity android:name=".mvvm.view.IndexActivity">
+
+        <activity
+            android:name=".mvvm.view.activity.SplashActivity"
+            android:theme="@style/BaseTheme.NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mvvm.view.activity.IndexActivity"
+            android:launchMode="standard"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

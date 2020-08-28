@@ -1,4 +1,5 @@
 package com.sung.mvvmframe.base;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sung.mvvmframe.Application;
+import com.sung.mvvmframe.recorder.PageFlowRecorder;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,17 +44,25 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (getArguments() != null){
+        if (getArguments() != null) {
             mBundleData = getArguments();
         }
         init();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            PageFlowRecorder.getInstance().addPageAuto(this.getClass().getSimpleName());
+        }
     }
 
     protected int getLayoutId() {
         return -1;
     }
 
-    protected void init(){
+    protected void init() {
 
     }
 

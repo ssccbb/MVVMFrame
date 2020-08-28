@@ -16,7 +16,8 @@ import com.sung.common.cache.MCache;
 import com.sung.mvvmframe.Application;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
-import com.sung.mvvmframe.mvvm.view.IndexActivity;
+import com.sung.mvvmframe.mvvm.view.activity.IndexActivity;
+import com.sung.mvvmframe.recorder.PageFlowRecorder;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -55,11 +56,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        PageFlowRecorder.getInstance().addPageAuto(this.getClass().getSimpleName());
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//        PageFlowRecorder.getInstance().updatePage(this.getClass().getSimpleName());
     }
 
     protected void getArgument(){

@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:background="@color/colorAccent"
-    app:popupTheme="@style/BookTheme.ToolBar.PopupMenu"
-    app:theme="@style/BookTheme.ToolBar"
+    app:popupTheme="@style/BaseTheme.ToolBar.PopupMenu"
+    app:theme="@style/BaseTheme.ToolBar"
     app:title="@string/app_name"
-    app:titleTextAppearance="@style/BookTheme.ToolBar.Title">
+    app:titleTextAppearance="@style/BaseTheme.ToolBar.Title">
 
     <TextView
         android:id="@+id/tv_title"

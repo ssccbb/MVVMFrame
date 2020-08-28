@@ -1,7 +1,6 @@
 package com.sung.common;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
 /**
  * Create by sung at 2020/8/28

@@ -48,4 +48,8 @@ public class UikitApi {
         //x5内核初始化接口
         QbSdk.initX5Environment(mContext,  cb);
     }
+
+    public Context getContext() {
+        return mContext;
+    }
 }

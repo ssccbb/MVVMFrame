@@ -1,21 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="BookTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="BookTheme.NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme.NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowAnimationStyle">@style/BookTheme.AnimaActivity</item>
+        <item name="android:windowAnimationStyle">@style/BaseTheme.AnimaActivity</item>
     </style>
 
-    <style name="BookTheme.AnimaActivity">
+    <style name="BaseTheme.AnimaActivity">
         <item name="android:activityOpenEnterAnimation">@anim/translate_right_to_center</item>
         <item name="android:activityOpenExitAnimation">@anim/translate_center_to_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/translate_left_to_center</item>
@@ -23,26 +23,26 @@
     </style>
 
     <!--ToolBar-->
-    <style name="BookTheme.ToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="BaseTheme.ToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!--toolbar字体颜色（同时会改变menu三点和返回按键颜色）-->
         <item name="android:textColorPrimary">@color/app_text_light</item>
         <item name="android:background">@color/theme_color</item>
     </style>
 
-    <style name="BookTheme.ToolBar.PopupMenu" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme.ToolBar.PopupMenu" parent="Theme.AppCompat.Light.NoActionBar">
         <!--文字的颜色-->
         <item name="android:textColor">@color/app_pop_text_light</item>
         <!--不覆盖toolbar-->
         <item name="overlapAnchor">false</item>
     </style>
 
-    <style name="BookTheme.ToolBar.Title" parent="BookTheme.ToolBar">
+    <style name="BaseTheme.ToolBar.Title" parent="BaseTheme.ToolBar">
         <item name="android:textSize">@dimen/actionBarTextSize</item>
         <item name="android:textColor">@color/app_text_light</item>
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="BookTheme.EditText" parent="Theme.AppCompat.Light">
+    <style name="BaseTheme.EditText" parent="Theme.AppCompat.Light">
         <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/login_tips</item>
         <item name="android:colorControlActivated" tools:targetApi="lollipop">@color/login_black
         </item>
@@ -51,11 +51,11 @@
         <!--        <item name="android:background">@android:color/transparent</item>-->
     </style>
 
-    <style name="BookTheme.TabLayout.Asset" parent="Theme.AppCompat.Light">
+    <style name="BaseTheme.TabLayout.Asset" parent="Theme.AppCompat.Light">
         <item name="android:textSize">@dimen/sp_20</item>
     </style>
 
-    <style name="BookTheme.TabLayout.Contract" parent="Theme.AppCompat.Light">
+    <style name="BaseTheme.TabLayout.Contract" parent="Theme.AppCompat.Light">
         <item name="android:textSize">@dimen/sp_14</item>
     </style>
 </resources>
