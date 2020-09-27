@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import me.sung.base.manager.AppManager;
+import me.sung.base.mgr.AppManager;
 import me.sung.base.utils.Log;
 import com.sung.mvvmframe.R;
 

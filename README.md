@@ -20,3 +20,5 @@ mvvm架构
 14. 带加载状态的ContentLoder
 15. 腾讯X5WebView
 16. 操作流记录体系
+17. Moudle反射方式初始化
+18. 可动态切换baseUrl网络框架

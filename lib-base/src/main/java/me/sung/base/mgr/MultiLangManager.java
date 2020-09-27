@@ -1,4 +1,4 @@
-package me.sung.base.manager;
+package me.sung.base.mgr;
 
 /**
  * Create by sung at 2020-04-03
