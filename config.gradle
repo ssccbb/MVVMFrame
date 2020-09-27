@@ -11,9 +11,6 @@ ext {
     ]
 
     app = [
-            net_domain     : '"http://www.ftdime.com"',
-            net_domain_test: '"http://www.ftdime.com"',
-            net_domain_name: '"ftcoin"'
     ]
 
     sign = [

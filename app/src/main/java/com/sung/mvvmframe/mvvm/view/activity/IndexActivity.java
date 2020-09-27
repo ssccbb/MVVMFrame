@@ -1,6 +1,6 @@
 package com.sung.mvvmframe.mvvm.view.activity;
 
-import com.sung.common.bean.config.ToolbarConfig;
+import me.sung.base.bean.config.ToolbarConfig;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.base.BaseActivity;
 

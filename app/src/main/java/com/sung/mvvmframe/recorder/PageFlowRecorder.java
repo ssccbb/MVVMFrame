@@ -3,7 +3,7 @@ package com.sung.mvvmframe.recorder;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.sung.common.utils.JsonParser;
+import me.sung.base.utils.JsonParser;
 import com.sung.mvvmframe.BuildConfig;
 
 import java.util.HashMap;

@@ -6,11 +6,16 @@ import android.graphics.Bitmap;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.sung.common.CommonApi;
-import com.sung.common.Constants;
+
+import me.jessyan.net.NetMoudleApi;
+import me.sung.base.BaseWrapper;
+import me.sung.base.Constants;
+import me.sung.base.utils.Log;
+
 import com.sung.mvvmframe.base.BaseApplication;
-import com.sung.net.NetApi;
-import com.sung.uikit.UikitApi;
+import com.sung.mvvmframe.config.MoudleConfig;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Create by sung at 2020/8/28
@@ -32,15 +37,23 @@ public class Application extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        proxyMoudleInitialized();
         FrescoInit(getContext());
+    }
 
-        try {
-            // 组件化初始
-            CommonApi.getInstance().init(getContext());
-            NetApi.getInstance().init(getContext());
-            UikitApi.getInstance().init(getContext());
-        } catch (Exception e) {
-            e.printStackTrace();
+    /**
+     * 反射初始化模块
+     */
+    private void proxyMoudleInitialized(){
+        for (String moudle : MoudleConfig.moudles) {
+            try {
+                Class<?> moudlEnter = Class.forName(moudle);
+                Method method = moudlEnter.getDeclaredMethod("getInstance");
+                BaseWrapper moudleProxy = (BaseWrapper) method.invoke(moudlEnter);
+                moudleProxy.attach(this.getApplicationContext());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -53,7 +66,7 @@ public class Application extends BaseApplication {
         try {
             DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(context)
                     //最大缓存
-                    .setMaxCacheSize(com.sung.common.Constants.Config.CONFIG_FRESCO_CACHE_SIZE * 1024 * 1024)
+                    .setMaxCacheSize(Constants.Config.CONFIG_FRESCO_CACHE_SIZE * 1024 * 1024)
                     //子目录
                     .setBaseDirectoryName(Constants.Config.CONFIG_FRESCO_CACHE_DIR)
                     .setBaseDirectoryPathSupplier(() -> {

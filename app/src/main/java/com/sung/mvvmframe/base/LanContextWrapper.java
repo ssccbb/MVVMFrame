@@ -9,7 +9,7 @@ import android.os.Build;
 import android.os.LocaleList;
 import android.text.TextUtils;
 
-import com.sung.common.Constants;
+import me.sung.base.Constants;
 
 import java.util.Locale;
 

@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="1" />
 
-        <com.sung.uikit.widget.HomeTabLayout
+        <me.sung.uikit.widget.HomeTabLayout
             android:id="@+id/htl_tabs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

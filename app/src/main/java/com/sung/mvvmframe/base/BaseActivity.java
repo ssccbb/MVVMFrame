@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.sung.common.bean.config.ToolbarConfig;
-import com.sung.common.utils.ScreenUtils;
-import com.sung.common.Constants;
-import com.sung.common.cache.MCache;
+import me.sung.base.bean.config.ToolbarConfig;
+import me.sung.base.utils.ScreenUtils;
+import me.sung.base.Constants;
+import me.sung.base.cache.MCache;
 import com.sung.mvvmframe.Application;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;

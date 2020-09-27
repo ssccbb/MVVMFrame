@@ -7,5 +7,5 @@ package com.sung.mvvmframe;
  * @notice:
  */
 public class Constants {
-    public static final String TAG = "MainLib";
+    public static final String TAG = "com.sung.mvvmframe";
 }

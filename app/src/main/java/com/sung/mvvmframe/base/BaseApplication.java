@@ -8,8 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.sung.common.manager.AppManager;
-import com.sung.common.utils.Log;
+import me.sung.base.manager.AppManager;
+import me.sung.base.utils.Log;
 import com.sung.mvvmframe.R;
 
 import androidx.appcompat.app.AppCompatActivity;

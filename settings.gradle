@@ -1,5 +1,5 @@
-include ':common'
-include ':net'
-include ':uikit'
+include ':lib-net'
+include ':lib-base'
+include ':lib-uikit'
 include ':app'
 rootProject.name = "MVVMFrame"

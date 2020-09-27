@@ -61,13 +61,13 @@
 }
 
 -keep class **.R$* { *; }
--keep class com.sung.common.bean.** { *; }
--keep class com.sung.common.eventbus.** { *; }
--keep class com.sung.common.enums.** { *; }
--keep class com.sung.common.Constants { *; }
+-keep class com.sung.base.bean.** { *; }
+-keep class com.sung.base.eventbus.** { *; }
+-keep class com.sung.base.enums.** { *; }
+-keep class me.sung.base.Constants { *; }
 -keep class com.sung.mvvmframe.Constants { *; }
 -keep class com.sung.net.Constants { *; }
--keep class com.sung.uikit.Constants { *; }
+-keep class me.sung.uikit.Constants { *; }
 
 # Explicitly preserve all serialization members. The Serializable interface
 # is only a marker interface, so it wouldn't save them.
