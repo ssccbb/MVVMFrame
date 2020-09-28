@@ -6,7 +6,7 @@ import me.sung.base.utils.Log;
 
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.api.IObserver;
-import com.sung.mvvmframe.api.NetClient;
+import com.sung.mvvmframe.api.NetDao;
 import com.sung.mvvmframe.base.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -27,22 +27,18 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void requestData() {
-        NetClient.getInstance(this)
-                .getWeatherApiService()
-                .getTopNews2("top","735174c341ded04b80ce9bba51c845e8")
-                .compose(NetClient.getDefaultTransformer())
-                .subscribe(new IObserver<TopNewsResponse>(TopNewsResponse.class) {
-                    @Override
-                    public void onNext(int code, TopNewsResponse topNewsResponse) {
-                        for (TopNewsResponse.ResultBean.DataBean bean : topNewsResponse.result.data) {
-                            Log.d(bean.title);
-                        }
-                    }
+        NetDao.getInstance(this).getTopNews(new IObserver<TopNewsResponse>(TopNewsResponse.class) {
+            @Override
+            public void onNext(int code, TopNewsResponse topNewsResponse) {
+                for (TopNewsResponse.ResultBean.DataBean bean : topNewsResponse.result.data) {
+                    Log.d(bean.title);
+                }
+            }
 
-                    @Override
-                    public void onError(int code, Exception e) {
-                        Log.d("request data succ!" + e.getMessage());
-                    }
-                });
+            @Override
+            public void onError(int code, Exception e) {
+                Log.d("request data succ!" + e.getMessage());
+            }
+        });
     }
 }

@@ -2,6 +2,10 @@ package com.sung.mvvmframe.api;
 
 import android.content.Context;
 
+import com.sung.mvvmframe.api.server.ApiConfig;
+import com.sung.mvvmframe.api.server.DefaultApiService;
+import com.sung.mvvmframe.api.server.NewsApiService;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +25,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.sung.mvvmframe.api.Api.DEFAULT_DOMAIN;
+import static com.sung.mvvmframe.api.server.ApiConfig.DEFAULT_DOMAIN;
 
 /**
  * Create by sung at 2020/9/25
@@ -29,7 +33,7 @@ import static com.sung.mvvmframe.api.Api.DEFAULT_DOMAIN;
  * @desc:
  * @notice:
  */
-public class NetClient {
+public class NetWorkManager {
     private static Context mContext;
     // 超时时间
     private static final int DEFAULT_TIMEOUT = 20;
@@ -40,31 +44,31 @@ public class NetClient {
      * API列表
      */
     private DefaultApiService mBaseApi;
-    private WeatherApiService mDoubApi;
+    private NewsApiService mDoubApi;
 
     private static class NetWorkManagerHolder {
-        private static final NetClient INSTANCE = new NetClient(mContext);
+        private static final NetWorkManager INSTANCE = new NetWorkManager(mContext);
     }
 
-    public static final NetClient getInstance(Context context) {
+    public static final NetWorkManager getInstance(Context context) {
         if (context != null) {
             mContext = context;
         }
         return NetWorkManagerHolder.INSTANCE;
     }
 
-    public static final NetClient getInstance(Context context, Map<String, String> headers) {
+    public static final NetWorkManager getInstance(Context context, Map<String, String> headers) {
         if (context != null) {
             mContext = context;
         }
-        return new NetClient(mContext, headers);
+        return new NetWorkManager(mContext, headers);
     }
 
-    private NetClient(Context context) {
+    private NetWorkManager(Context context) {
         this(context, null);
     }
 
-    private NetClient(Context context, Map<String, String> headers) {
+    private NetWorkManager(Context context, Map<String, String> headers) {
         //RetrofitUrlManager 初始化
         this.mOkHttpClient = RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder())
                 .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -88,7 +92,7 @@ public class NetClient {
                 .build();
 
         this.mBaseApi = mRetrofit.create(DefaultApiService.class);
-        this.mDoubApi = mRetrofit.create(WeatherApiService.class);
+        this.mDoubApi = mRetrofit.create(NewsApiService.class);
     }
 
     public static <T> ObservableTransformer<T, T> getDefaultTransformer() {
@@ -113,7 +117,7 @@ public class NetClient {
     /**
      * 检查当前baseurl
      */
-    public NetClient checkDoMainUrl(String domain_url, String domain_name) {
+    public NetWorkManager checkDoMainUrl(String domain_url, String domain_name) {
         HttpUrl httpUrl = RetrofitUrlManager.getInstance().fetchDomain(domain_name);
         //可以在 App 运行时随意切换某个接口的 BaseUrl
         if (httpUrl == null || !httpUrl.toString().equals(domain_url)) {
@@ -127,13 +131,13 @@ public class NetClient {
      *
      * @description 有多个baseurl时请补充get方法
      */
-    public DefaultApiService getApiService() {
-        checkDoMainUrl(Api.Base.DEFAULT_RELEASE_DOMAIN, Api.Base.DEFAULT_DOMAIN_NAME);
+    public DefaultApiService getDefApiService() {
+        checkDoMainUrl(ApiConfig.Base.DEFAULT_RELEASE_DOMAIN, ApiConfig.Base.DEFAULT_DOMAIN_NAME);
         return mBaseApi;
     }
 
-    public WeatherApiService getWeatherApiService() {
-        checkDoMainUrl(Api.Weather.DEFAULT_DOMAIN, Api.Weather.DEFAULT_DOMAIN_NAME);
+    public NewsApiService getNewsApiService() {
+        checkDoMainUrl(ApiConfig.News.DEFAULT_DOMAIN, ApiConfig.News.DEFAULT_DOMAIN_NAME);
         return mDoubApi;
     }
 }

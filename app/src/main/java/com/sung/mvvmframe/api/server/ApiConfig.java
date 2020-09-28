@@ -1,4 +1,4 @@
-package com.sung.mvvmframe.api;
+package com.sung.mvvmframe.api.server;
 
 /**
  * Create by sung at 2020/9/25
@@ -6,18 +6,18 @@ package com.sung.mvvmframe.api;
  * @desc:
  * @notice:
  */
-public interface Api {
+public interface ApiConfig {
 
     String DEFAULT_DOMAIN = "http://jessyan.me";
 
-    public class Base {
+    class Base {
         public static final String DEFAULT_DEBUG_DOMAIN = "";
         public static final String DEFAULT_RELEASE_DOMAIN = "";
         public static final String DEFAULT_DOMAIN_NAME = "";
     }
 
-    public class Weather {
+    class News {
         public static final String DEFAULT_DOMAIN = "http://v.juhe.cn";
-        public static final String DEFAULT_DOMAIN_NAME = "weather";
+        public static final String DEFAULT_DOMAIN_NAME = "news";
     }
 }
