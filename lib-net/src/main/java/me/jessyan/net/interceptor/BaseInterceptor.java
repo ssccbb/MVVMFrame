@@ -44,14 +44,16 @@ public class BaseInterceptor implements Interceptor{
             SharedPreferences sp = NetMoudleApi.getInstance().getContext().getSharedPreferences("sp_login", Context.MODE_PRIVATE);
             if (sp != null) {
                 String json = sp.getString("login_info", "");
-                JSONObject object = new JSONObject(json);
-                String token = object.getString("login_token");
-                if (!TextUtils.isEmpty(token)) {
-                    String cookie = "token=" + token;
+                if (!TextUtils.isEmpty(json)) {
+                    JSONObject object = new JSONObject(json);
+                    String token = object.getString("login_token");
+                    if (!TextUtils.isEmpty(token)) {
+                        String cookie = "token=" + token;
 //                    Log.e("cookies", cookie);
-                    builder.addHeader("Cookie", cookie);
-                } else {
+                        builder.addHeader("Cookie", cookie);
+                    } else {
 //                    Log.e("cookies", "token null");
+                    }
                 }
             } else {
                 Log.e("cookies", "sp null");

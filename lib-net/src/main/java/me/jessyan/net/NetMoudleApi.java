@@ -62,6 +62,6 @@ public class NetMoudleApi implements BaseWrapper {
      */
     @Override
     public String getAppPackageName() {
-        return "me.jessyan.netmanager";
+        return "me.jessyan.net";
     }
 }

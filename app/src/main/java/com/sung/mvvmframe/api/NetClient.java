@@ -40,7 +40,7 @@ public class NetClient {
      * API列表
      */
     private DefaultApiService mBaseApi;
-    private DoubApiService mDoubApi;
+    private WeatherApiService mDoubApi;
 
     private static class NetWorkManagerHolder {
         private static final NetClient INSTANCE = new NetClient(mContext);
@@ -88,7 +88,7 @@ public class NetClient {
                 .build();
 
         this.mBaseApi = mRetrofit.create(DefaultApiService.class);
-        this.mDoubApi = mRetrofit.create(DoubApiService.class);
+        this.mDoubApi = mRetrofit.create(WeatherApiService.class);
     }
 
     public static <T> ObservableTransformer<T, T> getDefaultTransformer() {
@@ -132,8 +132,8 @@ public class NetClient {
         return mBaseApi;
     }
 
-    public DoubApiService getDoubApiService() {
-        checkDoMainUrl(Api.Douban.DEFAULT_DOMAIN, Api.Douban.DEFAULT_DOMAIN_NAME);
+    public WeatherApiService getWeatherApiService() {
+        checkDoMainUrl(Api.Weather.DEFAULT_DOMAIN, Api.Weather.DEFAULT_DOMAIN_NAME);
         return mDoubApi;
     }
 }

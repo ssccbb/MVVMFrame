@@ -6,18 +6,18 @@ package com.sung.mvvmframe.api;
  * @desc:
  * @notice:
  */
-interface Api {
+public interface Api {
 
     String DEFAULT_DOMAIN = "http://jessyan.me";
 
-    class Base {
-        public static String DEFAULT_DEBUG_DOMAIN = "";
-        public static String DEFAULT_RELEASE_DOMAIN = "";
-        public static String DEFAULT_DOMAIN_NAME = "";
+    public class Base {
+        public static final String DEFAULT_DEBUG_DOMAIN = "";
+        public static final String DEFAULT_RELEASE_DOMAIN = "";
+        public static final String DEFAULT_DOMAIN_NAME = "";
     }
 
-    class Douban {
-        public static String DEFAULT_DOMAIN = "";
-        public static String DEFAULT_DOMAIN_NAME = "";
+    public class Weather {
+        public static final String DEFAULT_DOMAIN = "http://v.juhe.cn";
+        public static final String DEFAULT_DOMAIN_NAME = "weather";
     }
 }

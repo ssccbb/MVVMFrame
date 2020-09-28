@@ -6,5 +6,6 @@ package com.sung.mvvmframe.api;
  * @desc:
  * @notice:
  */
-interface DefaultApiService {
+public interface DefaultApiService {
+
 }
