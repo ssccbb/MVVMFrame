@@ -1,8 +1,6 @@
 package me.sung.uikit;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-
 import com.tencent.smtt.sdk.QbSdk;
 
 import me.sung.base.BaseWrapper;
@@ -67,17 +65,6 @@ public class UikitMoudleApi implements BaseWrapper {
     @Override
     public Context getContext() {
         return mContext;
-    }
-
-    /**
-     * @return 获取SP
-     */
-    @Override
-    public SharedPreferences getSharedPreferences() {
-        if (mContext == null) {
-            throw new NullPointerException("Empty Context!");
-        }
-        return mContext.getSharedPreferences(me.sung.base.Constants.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
     }
 
     /**

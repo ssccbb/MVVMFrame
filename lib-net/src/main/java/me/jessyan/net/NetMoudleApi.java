@@ -1,10 +1,7 @@
 package me.jessyan.net;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-
 import me.sung.base.BaseWrapper;
-import me.sung.base.Constants;
 import me.sung.base.utils.Log;
 
 /**
@@ -44,17 +41,6 @@ public class NetMoudleApi implements BaseWrapper {
     @Override
     public Context getContext() {
         return mContext;
-    }
-
-    /**
-     * @return 获取SP
-     */
-    @Override
-    public SharedPreferences getSharedPreferences() {
-        if (mContext == null) {
-            throw new NullPointerException("Empty Context!");
-        }
-        return mContext.getSharedPreferences(Constants.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
     }
 
     /**

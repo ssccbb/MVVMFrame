@@ -7,6 +7,9 @@
     <!--sys-->
     <string name="sys_copy_tipst">复制</string>
     <string name="sys_skip_hint">跳过</string>
+    <string name="sys_skip_mills_hint">%dS|跳过</string>
+    <string name="sys_next_hint">下一页</string>
+    <string name="sys_enter_hint">进入首页</string>
     <string name="sys_test">示例文字</string>
     <string name="sys_login_out">退出登录</string>
     <string name="sys_login_in">登录</string>

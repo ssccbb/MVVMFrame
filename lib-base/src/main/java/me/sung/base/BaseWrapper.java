@@ -15,8 +15,6 @@ public interface BaseWrapper {
 
     Context getContext();
 
-    SharedPreferences getSharedPreferences();
-
     String getAppPackageName();
 
     String getLogPath();

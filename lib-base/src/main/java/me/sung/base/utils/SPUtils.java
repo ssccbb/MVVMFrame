@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import me.sung.base.Constants;
+import me.sung.base.cache.MCache;
 
 import java.util.Map;
 
@@ -43,7 +44,7 @@ public class SPUtils {
             if (context == null) {
                 return;
             }
-            SharedPreferences sp = context.getSharedPreferences(Constants.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
+            SharedPreferences sp = context.getSharedPreferences(MCache.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
 
             if (object instanceof String) {
@@ -68,7 +69,7 @@ public class SPUtils {
             if (context == null) {
                 return defaultValue;
             }
-            SharedPreferences preferences = context.getSharedPreferences(Constants.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
+            SharedPreferences preferences = context.getSharedPreferences(MCache.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
             Map<String, T> map = (Map<String, T>) preferences.getAll();
             T value = map.get(key);
             return value != null ? value : defaultValue;
@@ -84,7 +85,7 @@ public class SPUtils {
         if (context == null) {
             return;
         }
-        SharedPreferences sp = context.getSharedPreferences(Constants.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(MCache.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
         editor.commit();

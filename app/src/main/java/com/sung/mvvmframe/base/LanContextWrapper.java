@@ -10,6 +10,7 @@ import android.os.LocaleList;
 import android.text.TextUtils;
 
 import me.sung.base.Constants;
+import me.sung.base.cache.MCache;
 
 import java.util.Locale;
 
@@ -33,8 +34,8 @@ public class LanContextWrapper extends ContextWrapper {
 
     public static ContextWrapper wrap(Context context) {
         Locale newLocale;
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        String lanTag = sharedPreferences.getString(Constants.Config.CONFIG_LANGUAGE, "en");
+        SharedPreferences sharedPreferences = context.getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        String lanTag = sharedPreferences.getString(Constants.CONFIG_LANGUAGE, "en");
         switch (lanTag) {
             //没有手动设置过对应的语言则默认读取手机系统的语言
             case "def":
@@ -61,7 +62,7 @@ public class LanContextWrapper extends ContextWrapper {
                 } else {
                     newLocale = Locale.CHINESE;
                 }
-                sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, langFlag).apply();
+                sharedPreferences.edit().putString(Constants.CONFIG_LANGUAGE, langFlag).apply();
                 break;
             //设置为英语
             case LANG_EN:
@@ -136,7 +137,7 @@ public class LanContextWrapper extends ContextWrapper {
     }
 
     public static String getLangTag(Context context){
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        return sharedPreferences.getString(Constants.Config.CONFIG_LANGUAGE, "en");
+        SharedPreferences sharedPreferences = context.getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        return sharedPreferences.getString(Constants.CONFIG_LANGUAGE, "en");
     }
 }

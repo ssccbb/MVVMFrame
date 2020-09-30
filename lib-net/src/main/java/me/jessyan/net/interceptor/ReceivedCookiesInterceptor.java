@@ -1,12 +1,10 @@
 package me.jessyan.net.interceptor;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.io.IOException;
 import java.util.HashSet;
-
-import me.jessyan.net.NetMoudleApi;
+import me.sung.base.cache.MTempCache;
 import okhttp3.Interceptor;
 import okhttp3.Response;
 
@@ -28,9 +26,7 @@ public class ReceivedCookiesInterceptor implements Interceptor {
             for (String header : originalResponse.headers("Set-Cookie")) {
                 cookies.add(header);
             }
-            SharedPreferences.Editor config = NetMoudleApi.getInstance().getSharedPreferences().edit();
-            config.putStringSet("cookies", cookies);
-            config.commit();
+            MTempCache.setCookies(cookies);
         }else {
             Log.v("cookies","empty cookie");
         }

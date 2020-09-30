@@ -1,9 +1,11 @@
 package me.sung.base;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
+import me.sung.base.cache.MCache;
+import me.sung.base.mgr.AccountManager;
 import me.sung.base.utils.Log;
+import me.sung.base.utils.SPUtils;
 
 /**
  * Create by sung at 2020/8/28
@@ -26,6 +28,14 @@ public class CommonMoudleApi implements BaseWrapper {
     public void attach(Context context) {
         this.mContext = context;
         Log.d(getAppPackageName()+"---->attach");
+
+        initialize();
+    }
+
+    private void initialize(){
+        MCache.setGuideShown(false);
+        MCache.setNightMode(false);
+        SPUtils.init(mContext);
     }
 
     /**
@@ -42,17 +52,6 @@ public class CommonMoudleApi implements BaseWrapper {
     @Override
     public Context getContext() {
         return mContext;
-    }
-
-    /**
-     * @return 获取SP
-     */
-    @Override
-    public SharedPreferences getSharedPreferences() {
-        if (mContext == null) {
-            throw new NullPointerException("Empty Context!");
-        }
-        return mContext.getSharedPreferences(Constants.DEFAULT_SP_NAME, Context.MODE_PRIVATE);
     }
 
     /**

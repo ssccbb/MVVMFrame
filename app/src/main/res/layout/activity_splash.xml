@@ -1,8 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mvvm.view.activity.SplashActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data class=".SplashActivityBinder">
+
+        <variable
+            name="tips"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".mvvm.view.activity.SplashActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/rl_slogan"
+            app:layout_constraintHorizontal_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/tv_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dp_5"
+                android:alpha="0.6"
+                android:background="@drawable/shape_gray"
+                android:foreground="?selectableItemBackground"
+                android:onClick="@{listener::onClick}"
+                android:paddingLeft="@dimen/dp_4"
+                android:paddingTop="@dimen/dp_1"
+                android:paddingRight="@dimen/dp_4"
+                android:paddingBottom="@dimen/dp_1"
+                android:text="@{tips}"
+                android:textColor="@color/app_white_ff"
+                android:textSize="@dimen/sp_10"
+                tools:text="@string/sys_skip_hint" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/rl_slogan"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_100"
+            android:background="@color/app_white_ff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="@string/app_name"
+                android:textColor="@color/app_gray_bcc7cc"
+                android:textSize="@dimen/sp_30"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

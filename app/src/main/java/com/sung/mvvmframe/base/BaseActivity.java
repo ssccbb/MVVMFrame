@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import me.sung.base.bean.config.ToolbarConfig;
+import me.sung.base.mgr.AccountManager;
+import me.sung.base.utils.SPUtils;
 import me.sung.base.utils.ScreenUtils;
 import me.sung.base.Constants;
 import me.sung.base.cache.MCache;
-import com.sung.mvvmframe.Application;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
 import com.sung.mvvmframe.mvvm.view.activity.IndexActivity;
@@ -30,7 +33,8 @@ import butterknife.ButterKnife;
  * @date: 2018/10/15
  * @Description: activity基类
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<D extends ViewDataBinding> extends AppCompatActivity {
+    protected D mBinder;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -47,8 +51,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResID());
-        acceptToolbarConfig(getToolbarConfig());
+        mBinder = DataBindingUtil.setContentView(this, getLayoutResID());
+        ToolbarConfig config = getToolbarConfig();
+        if (config != null) {
+            acceptToolbarConfig(config);
+        }
         getArgument();
         set();
     }
@@ -140,7 +147,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * default preferences
      */
     protected SharedPreferences getPreferences() {
-        return Application.getInstance().getPreferences();
+        return SPUtils.get(MCache.DEFAULT_SP_NAME);
     }
 
     protected FragmentTransaction getSupportFragmentTransaction() {
@@ -151,8 +158,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 转换简体中文
      */
     public void changeChinese() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, LanContextWrapper.LANG_CN).apply();
+        SharedPreferences sharedPreferences = getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(Constants.CONFIG_LANGUAGE, LanContextWrapper.LANG_CN).apply();
         rebot();
     }
 
@@ -160,8 +167,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 转换英文
      */
     public void changeEnglish() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, LanContextWrapper.LANG_EN).apply();
+        SharedPreferences sharedPreferences = getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(Constants.CONFIG_LANGUAGE, LanContextWrapper.LANG_EN).apply();
         rebot();
     }
 
@@ -169,8 +176,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 转换日文
      */
     public void changeJapanese() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, LanContextWrapper.LANG_JP).apply();
+        SharedPreferences sharedPreferences = getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(Constants.CONFIG_LANGUAGE, LanContextWrapper.LANG_JP).apply();
         rebot();
     }
 
@@ -178,14 +185,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 转换繁体中文
      */
     public void changeRChinese() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, LanContextWrapper.LANG_HK).apply();
+        SharedPreferences sharedPreferences = getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(Constants.CONFIG_LANGUAGE, LanContextWrapper.LANG_HK).apply();
         rebot();
     }
 
     public void changeKorean() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
-        sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, LanContextWrapper.LANG_KO).apply();
+        SharedPreferences sharedPreferences = getSharedPreferences(MCache.DEFAULT_SP_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(Constants.CONFIG_LANGUAGE, LanContextWrapper.LANG_KO).apply();
         rebot();
     }
 
@@ -215,7 +222,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 重新登录
      */
     protected void relogin() {
-        MCache.clearLogin();
+        AccountManager.clear();
         Router.goLoginActivity(this);
     }
 

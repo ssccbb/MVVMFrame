@@ -7,14 +7,11 @@ import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
-import me.jessyan.net.NetMoudleApi;
 import me.sung.base.BaseWrapper;
 import me.sung.base.Constants;
-import me.sung.base.utils.Log;
 
 import com.sung.mvvmframe.base.BaseApplication;
 import com.sung.mvvmframe.config.MoudleConfig;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -66,9 +63,9 @@ public class Application extends BaseApplication {
         try {
             DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(context)
                     //最大缓存
-                    .setMaxCacheSize(Constants.Config.CONFIG_FRESCO_CACHE_SIZE * 1024 * 1024)
+                    .setMaxCacheSize(Constants.CONFIG_FRESCO_CACHE_SIZE * 1024 * 1024)
                     //子目录
-                    .setBaseDirectoryName(Constants.Config.CONFIG_FRESCO_CACHE_DIR)
+                    .setBaseDirectoryName(Constants.CONFIG_FRESCO_CACHE_DIR)
                     .setBaseDirectoryPathSupplier(() -> {
                         //还是推荐缓存到应用本身的缓存文件夹,这样卸载时能自动清除,其他清理软件也能扫描出来
                         return context.getCacheDir();

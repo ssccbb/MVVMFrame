@@ -25,4 +25,15 @@
         <attr name="tab_icons" format="reference|integer" />
         <attr name="tab_titles" format="reference|integer" />
     </declare-styleable>
+    <!--viewpager指示器-->
+    <declare-styleable name="PagerIndicator">
+        <attr name="IndicatorColor" format="color"/>
+        <attr name="IndicatorShadowColor" format="color"/>
+        <attr name="IndicatorSelectedWidthDimension" format="dimension"/>
+        <attr name="IndicatorDiaDimension" format="dimension"/>
+        <attr name="IndicatorSpaceDimension" format="dimension"/>
+        <attr name="IndicatorShadowRadiusDimension" format="dimension"/>
+        <attr name="IndicatorIsAnimation" format="boolean"/>
+        <attr name="IndicatorIsShadow" format="boolean"/>
+    </declare-styleable>
 </resources>

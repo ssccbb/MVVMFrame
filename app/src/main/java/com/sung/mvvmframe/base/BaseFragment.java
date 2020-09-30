@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.sung.mvvmframe.Application;
 import com.sung.mvvmframe.recorder.PageFlowRecorder;
 
 import androidx.annotation.NonNull;
@@ -15,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.sung.base.cache.MCache;
+import me.sung.base.utils.SPUtils;
 
 /**
  * @author: sung
@@ -67,7 +67,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected SharedPreferences getPreferences() {
-        return Application.getInstance().getPreferences();
+        return SPUtils.get(MCache.DEFAULT_SP_NAME);
     }
 
     protected FragmentManager getSupportFragmentManager() {
