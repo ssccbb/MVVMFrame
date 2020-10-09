@@ -1,6 +1,6 @@
 package com.sung.mvvmframe.mvvm.view.activity;
 
-import me.sung.base.bean.config.ToolbarConfig;
+import me.sung.base.bean.config.ActionBarConfig;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.base.BaseActivity;
 
@@ -17,7 +17,7 @@ public class IndexActivity extends BaseActivity {
     }
 
     @Override
-    protected ToolbarConfig getToolbarConfig() {
-        return null;
+    protected ActionBarConfig getActionbarConfig() {
+        return getSimpleActionbarConfig(getString(R.string.app_name),true);
     }
 }

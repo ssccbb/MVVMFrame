@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import me.sung.base.bean.config.ToolbarConfig;
-import me.sung.base.utils.Log;
-
+import me.sung.base.bean.config.ActionBarConfig;
 import com.sung.mvvmframe.GuideActivityBinder;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
@@ -91,7 +89,7 @@ public class GuideActivity extends BaseActivity<GuideActivityBinder> implements 
     }
 
     @Override
-    protected ToolbarConfig getToolbarConfig() {
+    protected ActionBarConfig getActionbarConfig() {
         return null;
     }
 

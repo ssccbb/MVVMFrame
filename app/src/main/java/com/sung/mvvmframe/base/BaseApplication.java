@@ -46,26 +46,6 @@ public class BaseApplication extends Application implements Application.Activity
     @Override
     public void onActivityStarted(Activity activity) {
 //        Log.saveOperationIntoLocal(activity+" --> onActivityStarted");
-//        使用lifecycle接口 设置公共toolbar
-        if (activity.findViewById(R.id.tool_bar) != null) {
-            if (activity instanceof AppCompatActivity) {
-                AppCompatActivity compatActivity = (AppCompatActivity) activity;
-                Toolbar toolbar = activity.findViewById(R.id.tool_bar);
-                compatActivity.setSupportActionBar(toolbar);
-                compatActivity.getSupportActionBar().setDisplayShowTitleEnabled(true);
-                compatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> activity.finish());
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    activity.setActionBar(activity.findViewById(R.id.tool_bar));
-                    activity.getActionBar().setDisplayShowTitleEnabled(false);
-                }
-            }
-        }
-        if (activity.findViewById(R.id.tv_title) != null) {
-            TextView centerTitle = activity.findViewById(R.id.tv_title);
-            centerTitle.setText(activity.getTitle());
-        }
     }
 
     /**

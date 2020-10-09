@@ -8,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import me.sung.base.Constants;
-import me.sung.base.bean.config.ToolbarConfig;
+import me.sung.base.bean.config.ActionBarConfig;
 import me.sung.base.cache.MCache;
 import me.sung.base.utils.Log;
 
@@ -64,7 +64,7 @@ public class SplashActivity extends BaseActivity<SplashActivityBinder> implement
     }
 
     @Override
-    protected ToolbarConfig getToolbarConfig() {
+    protected ActionBarConfig getActionbarConfig() {
         return null;
     }
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/action_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_72"
+    android:elevation="@dimen/dp_3"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp_24">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <LinearLayout
+            android:id="@+id/ll_action_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_50"
+            android:background="?selectableItemBackground"
+            android:gravity="center"
+            android:minWidth="@dimen/dp_50"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_action_back"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                tools:src="@mipmap/ic_black_back" />
+
+            <ImageView
+                android:id="@+id/iv_action_logo"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:visibility="gone"
+                tools:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_action_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:gravity="center"
+                android:textColor="@color/app_black_ff"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
+                tools:text="@string/sys_back_tipst" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_action_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="@dimen/sp_20"
+                tools:text="@string/app_name"
+                tools:textColor="@color/app_black_ff" />
+
+            <TextView
+                android:id="@+id/tv_action_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
+                tools:text="@string/app_name"
+                tools:textColor="@color/app_gray_bcc7cc" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_action_menu"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/dp_12"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_action_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:minWidth="@dimen/dp_50"
+            android:padding="@dimen/dp_10"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/sys_next_hint"
+            tools:textColor="@color/app_black_ff" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
