@@ -8,8 +8,6 @@ package me.sung.base.enums;
  */
 public enum TabTypeEnum {
     HOME_INDEX,
-    HOME_QUOTATION,
-    HOME_TRANSACTION,
     HOME_ASSETS,
     HOME_CONTRACT
 }

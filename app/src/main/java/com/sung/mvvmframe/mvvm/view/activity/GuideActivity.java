@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import me.sung.base.bean.config.ActionBarConfig;
+import me.sung.base.cache.MCache;
+
 import com.sung.mvvmframe.GuideActivityBinder;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
@@ -27,7 +29,7 @@ public class GuideActivity extends BaseActivity<GuideActivityBinder> implements 
     }
 
     private void setMCache() {
-//        MCache.setGuideShown(true);
+        MCache.setGuideShown(true);
     }
 
     private void setPager() {

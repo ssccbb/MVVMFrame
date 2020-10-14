@@ -9,6 +9,8 @@ import com.sung.mvvmframe.recorder.PageFlowRecorder;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
@@ -21,9 +23,11 @@ import me.sung.base.utils.SPUtils;
  * @date: 2018/10/15
  * @Description: fragment基类
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<D extends ViewDataBinding> extends Fragment {
     private Unbinder unbinder;
     protected Bundle mBundleData;
+    protected D mBinder;
+    protected View mRoot;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,12 +37,16 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = getLayoutId() != -1 ? inflater.inflate(getLayoutId(), container, false)
-                : super.onCreateView(inflater, container, savedInstanceState);
-        if (view != null) {
-            unbinder = ButterKnife.bind(this, view);
+        if (getLayoutId() != -1) {
+            mBinder = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+            mRoot = mBinder.getRoot();
+        } else {
+            mRoot = super.onCreateView(inflater, container, savedInstanceState);
         }
-        return view;
+        if (mRoot != null) {
+            unbinder = ButterKnife.bind(this, mRoot);
+        }
+        return mRoot;
     }
 
     @Override
@@ -47,7 +55,7 @@ public abstract class BaseFragment extends Fragment {
         if (getArguments() != null) {
             mBundleData = getArguments();
         }
-        init();
+        set();
     }
 
     @Override
@@ -58,13 +66,9 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    protected int getLayoutId() {
-        return -1;
-    }
+    protected abstract int getLayoutId();
 
-    protected void init() {
-
-    }
+    protected abstract void set();
 
     protected SharedPreferences getPreferences() {
         return SPUtils.get(MCache.DEFAULT_SP_NAME);
@@ -78,6 +82,10 @@ public abstract class BaseFragment extends Fragment {
         if (getActivity() != null) {
             getActivity().onBackPressed();
         }
+    }
+
+    protected String getSimpleName(){
+        return this.getClass().getSimpleName();
     }
 
     @Override

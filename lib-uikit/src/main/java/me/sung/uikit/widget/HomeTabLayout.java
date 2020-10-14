@@ -54,8 +54,6 @@ public class HomeTabLayout extends LinearLayout {
         String[] titles = context.getResources().getStringArray(tabTitleArrayResId);
         int[] icons = context.getResources().getIntArray(tabIconsArrayResId);
         TabTypeEnum[] types = {TabTypeEnum.HOME_INDEX,
-                TabTypeEnum.HOME_QUOTATION,
-                TabTypeEnum.HOME_TRANSACTION,
                 TabTypeEnum.HOME_CONTRACT,
                 TabTypeEnum.HOME_ASSETS};
         if (titles.length == 0 || icons.length == 0 || titles.length != icons.length) {
