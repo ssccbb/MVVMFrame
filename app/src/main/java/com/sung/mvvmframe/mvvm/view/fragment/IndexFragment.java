@@ -7,6 +7,7 @@ import android.view.View;
 import com.sung.mvvmframe.IndexFragmentBinder;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.base.BaseFragment;
+import com.sung.mvvmframe.mvvm.viewmodel.BaseViewModel;
 
 import me.sung.base.enums.TabTypeEnum;
 import me.sung.base.utils.SnackbarUtils;
@@ -17,7 +18,7 @@ import me.sung.base.utils.SnackbarUtils;
  * @desc:
  * @notice:
  */
-public class IndexFragment extends BaseFragment<IndexFragmentBinder> implements View.OnClickListener {
+public class IndexFragment extends BaseFragment<BaseViewModel, IndexFragmentBinder> implements View.OnClickListener {
 
     public static IndexFragment newInstance(TabTypeEnum typeEnum) {
         Bundle data = new Bundle();

@@ -28,7 +28,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@color/colorAccent" />
+                android:src="@color/theme_color" />
 
             <TextView
                 android:id="@+id/tv_skip"

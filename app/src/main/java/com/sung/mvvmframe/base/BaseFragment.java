@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sung.mvvmframe.mvvm.viewmodel.BaseViewModel;
 import com.sung.mvvmframe.recorder.PageFlowRecorder;
 
 import androidx.annotation.NonNull;
@@ -23,10 +25,11 @@ import me.sung.base.utils.SPUtils;
  * @date: 2018/10/15
  * @Description: fragment基类
  */
-public abstract class BaseFragment<D extends ViewDataBinding> extends Fragment {
+public abstract class BaseFragment<M extends BaseViewModel, D extends ViewDataBinding> extends Fragment {
     private Unbinder unbinder;
     protected Bundle mBundleData;
     protected D mBinder;
+    protected M mModel;
     protected View mRoot;
 
     @Override

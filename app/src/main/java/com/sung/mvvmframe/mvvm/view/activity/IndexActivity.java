@@ -1,7 +1,7 @@
 package com.sung.mvvmframe.mvvm.view.activity;
 
 import androidx.annotation.NonNull;
-import butterknife.OnPageChange;
+import androidx.viewpager.widget.ViewPager;
 import me.sung.base.bean.HomeTabBean;
 import me.sung.base.bean.config.ActionBarConfig;
 import me.sung.base.enums.MenuEnum;
@@ -14,10 +14,12 @@ import com.sung.mvvmframe.adapter.IndexPagerAdapter;
 import com.sung.mvvmframe.base.BaseActivity;
 import com.sung.mvvmframe.base.BaseFragment;
 import com.sung.mvvmframe.mvvm.view.fragment.IndexFragment;
+import com.sung.mvvmframe.mvvm.viewmodel.BaseViewModel;
 
 import java.util.List;
 
-public class IndexActivity extends BaseActivity<IndexActivityBinder> implements HomeTabLayout.OnTabSelectListener {
+public class IndexActivity extends BaseActivity<BaseViewModel, IndexActivityBinder>
+        implements HomeTabLayout.OnTabSelectListener, ViewPager.OnPageChangeListener {
     private IndexPagerAdapter<HomeTabBean, BaseFragment> mIndexPager;
 
     @Override
@@ -30,11 +32,14 @@ public class IndexActivity extends BaseActivity<IndexActivityBinder> implements 
                 return creatFragment(data.getmTabType());
             }
         };
-        mBinder.htlTabs.addOnTabSelectListener(this::onTabSelect);
+
         mBinder.htlTabs.setSelect(0, true);
         mBinder.vpPager.setOffscreenPageLimit(tabs.size());
         mBinder.vpPager.setAdapter(mIndexPager);
         mBinder.vpPager.setCurrentItem(0);
+
+        mBinder.htlTabs.addOnTabSelectListener(this::onTabSelect);
+        mBinder.vpPager.addOnPageChangeListener(this);
     }
 
     private BaseFragment creatFragment(TabTypeEnum typeEnum) {
@@ -59,13 +64,23 @@ public class IndexActivity extends BaseActivity<IndexActivityBinder> implements 
                 .creat();
     }
 
-    @OnPageChange(R.id.vp_pager)
-    public void onPageSelect(int position) {
+    @Override
+    public void onTabSelect(int position, HomeTabBean tab) {
+        mBinder.vpPager.setCurrentItem(position);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
         mBinder.htlTabs.setSelect(position, true);
     }
 
     @Override
-    public void onTabSelect(int position, HomeTabBean tab) {
-        mBinder.vpPager.setCurrentItem(position);
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

@@ -24,6 +24,7 @@ import me.sung.base.cache.MCache;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
 import com.sung.mvvmframe.mvvm.view.activity.IndexActivity;
+import com.sung.mvvmframe.mvvm.viewmodel.BaseViewModel;
 import com.sung.mvvmframe.recorder.PageFlowRecorder;
 
 import androidx.annotation.Nullable;
@@ -37,8 +38,9 @@ import me.sung.base.utils.StatusBarUtils;
  * @date: 2018/10/15
  * @Description: activity基类
  */
-public abstract class BaseActivity<D extends ViewDataBinding> extends AppCompatActivity {
+public abstract class BaseActivity<M extends BaseViewModel, D extends ViewDataBinding> extends AppCompatActivity {
     protected D mBinder;
+    protected M mModel;
 
     @Override
     public void setContentView(int layoutResID) {

@@ -16,10 +16,11 @@ import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
 import com.sung.mvvmframe.SplashActivityBinder;
 import com.sung.mvvmframe.base.BaseActivity;
+import com.sung.mvvmframe.mvvm.viewmodel.BaseViewModel;
 
 import java.util.concurrent.TimeUnit;
 
-public class SplashActivity extends BaseActivity<SplashActivityBinder> implements View.OnClickListener {
+public class SplashActivity extends BaseActivity<BaseViewModel, SplashActivityBinder> implements View.OnClickListener {
     private CompositeDisposable mSkipComposite = new CompositeDisposable();
     private int mSkipTime = Constants.CONFIG_SPLASH_SKIP_TIME;
 

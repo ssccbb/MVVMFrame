@@ -16,8 +16,9 @@ import com.sung.mvvmframe.GuideActivityBinder;
 import com.sung.mvvmframe.R;
 import com.sung.mvvmframe.Router;
 import com.sung.mvvmframe.base.BaseActivity;
+import com.sung.mvvmframe.mvvm.viewmodel.BaseViewModel;
 
-public class GuideActivity extends BaseActivity<GuideActivityBinder> implements View.OnClickListener {
+public class GuideActivity extends BaseActivity<BaseViewModel, GuideActivityBinder> implements View.OnClickListener {
     private int[] mGuidePics = {R.drawable.guide_pic_1,
             R.drawable.guide_pic_2,
             R.drawable.guide_pic_3};
